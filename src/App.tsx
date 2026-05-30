@@ -1,23 +1,19 @@
+import { Routes, Route } from 'react-router-dom'
+
 import { Atmosphere } from './components/layout/Atmosphere'
 import { HeaderNav } from './components/layout/HeaderNav'
-import { Footer } from './sections/Footer'
-import { HeroSection } from './sections/HeroSection'
-import { ShowcaseSection } from './sections/ShowcaseSection'
-import { DemoSection } from './sections/DemoSection'
-import { TrailerSection } from './sections/TrailerSection'
+import { GamePage } from './pages/GamePage'
+import { LandingPage } from './pages/LandingPage'
 
 function App() {
   return (
     <div className="min-h-[100svh] overflow-x-clip">
       <Atmosphere />
       <HeaderNav />
-      <main>
-        <HeroSection />
-        <TrailerSection />
-        <ShowcaseSection />
-        <DemoSection />
-      </main>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/game" element={<GamePage />} />
+      </Routes>
     </div>
   )
 }

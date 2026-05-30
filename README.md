@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# Alter Ego
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cozy-surreal, single-page teaser for an “Alter Ego” life-path game concept: pick a setting, answer three moments, and reveal an archetype profile.
 
-Currently, two official plugins are available:
+## Project Goals
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Ship a high-polish teaser/vertical slice that feels like a real product page and a playable prototype.
+- Keep the experience privacy-friendly and lightweight: no accounts, no backend; history stays in the browser.
+- Make the “archetype reveal” easy to iterate on via simple, authored data (prompts, scoring, archetype copy).
 
-## React Compiler
+## What’s Included
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Landing sections: hero CTA, trailer player, and a rotating showcase of locations + characters.
+- Playable demo flow:
+  - Choose Country, Era, and a Seed
+  - Answer three prompt “moments”
+  - Get matched to an archetype (Builder / Explorer / Rebel / Caregiver)
+- Local history of past runs (stored in `localStorage`; up to 16 entries).
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React + TypeScript
+- Vite
+- TailwindCSS
+- Local storage persistence (browser-only)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Prerequisites: Node.js (18+ recommended) and npm.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Other useful commands:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
+npm run lint
 ```
+
+## Project Structure
+
+- `src/sections/`: page sections (Hero, Trailer, Showcase, Demo, Footer)
+- `src/components/demo/`: demo UI components (history list, profile card, etc.)
+- `src/data/`: authored content for the demo and showcase
+- `public/`: static assets (includes the trailer video)
+
+## Customization
+
+- Demo content (countries, eras, prompts, archetypes): `src/data/demo.ts`
+- Showcase content (locations, characters): `src/data/showcase.ts`
+- Trailer video: replace `public/alter-ego-480p.mp4` (supported: `.mp4`, `.webm`)
+
+## Privacy Notes
+
+- The demo stores a small run history in your browser (key: `alterEgo.demoHistory`).
+- No data is sent to any server by default.
+
+## License
+
+No license file is included yet. Add a `LICENSE` file if you plan to distribute this publicly.
