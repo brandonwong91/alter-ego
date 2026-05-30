@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    font-family: theme('fontFamily.body');
+    color: theme('colors.ink.1');
+    background: theme('colors.fog.1');
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: theme('fontFamily.display');
+    color: theme('colors.ink.1');
+    letter-spacing: -0.02em;
+  }
+}
